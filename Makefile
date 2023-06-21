@@ -2,15 +2,18 @@ NAME	= philo
 CC	= gcc
 CFLAGS	= -Wall -Werror -Wextra -g3 -pthread
 SRC	+= src/main.c
+SRC	+= src/actions.c
 SRC	+= src/ft.c
 SRC	+= src/parse.c
 OBJ	= $(SRC:%.c=%.o)
 PATH_HEADERS += include/
+HEADERS	+=	$(PATH_HEADERS)philo.h
+HEADERS	+=	$(PATH_HEADERS)philo_defines.h
 
 $(NAME):	$(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(PATH_HEADERS:%=-I%)
 
-src/%.o:	%.c
+%.o:	%.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@ $(PATH_HEADERS:%=-I%)
 
 all:	$(NAME)
