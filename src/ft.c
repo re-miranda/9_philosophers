@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:08:58 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/06/21 13:02:31 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:20:30 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,16 @@ int	ft_atoi_safe(char *str, int *result_ptr)
 	if (result_ptr)
 		*result_ptr = (int)output;
 	return (0);
+}
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	char	new_line;
+
+	new_line = '\n';
+	if (!s)
+		return ;
+	while (s[0])
+		write(fd, s++, 1);
+	write(fd, &new_line, 1);
 }

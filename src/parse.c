@@ -18,18 +18,18 @@ int	*parse_input(int argc, char *argv[])
 {
 	int	*parsed_input;
 
-	if (argc != 5 || argc != 6)
+	if (argc != 5 && argc != 6)
 		return (NULL);
 	if (assert_there_are_only_digits(argv))
 		return (NULL);
 	parsed_input = ft_calloc(sizeof(int), argc);
 	if (!parsed_input)
 		return (NULL);
-	if (ft_atoi_safe(argv[2], &parsed_input[0])
-		|| (ft_atoi_safe(argv[3], &parsed_input[1]))
-		|| (ft_atoi_safe(argv[4], &parsed_input[2]))
-		|| (ft_atoi_safe(argv[5], &parsed_input[3]))
-		|| (argc == 6 && ft_atoi_safe(argv[6], &parsed_input[4])))
+	if (ft_atoi_safe(argv[1], &parsed_input[0])
+		|| (ft_atoi_safe(argv[2], &parsed_input[1]))
+		|| (ft_atoi_safe(argv[3], &parsed_input[2]))
+		|| (ft_atoi_safe(argv[4], &parsed_input[3]))
+		|| (argc == 6 && ft_atoi_safe(argv[5], &parsed_input[4])))
 	{
 		free(parsed_input);
 		return (NULL);
@@ -41,6 +41,7 @@ static int	assert_there_are_only_digits(char **str_table)
 {
 	int	index;
 
+	str_table++;
 	while (str_table[0])
 	{
 		index = 0;
