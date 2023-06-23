@@ -14,12 +14,13 @@
 
 int	main(int argc, char *argv[])
 {
+	t_philo_info	info;
 	int			*input;
 	pthread_t	t_tdata;
 	pthread_t	t_tdata2;
 	pthread_mutex_t	print_mutex;
 
-	input = parse_input(argc, argv);
+	input = parse_input(argc, argv, &);
 	if (!input)
 		return (-1);
 	pthread_mutex_init(&print_mutex, NULL);
