@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:56 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/06/08 10:06:03 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/06/22 22:29:04 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct	s_philo_info {
 	t_philo_args	args;
-	t_pthread_mutex	print_mutex;
-	t_pthread_mutex	*forks;
+	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	*forks;
 }	t_philo_info;
 
 typedef struct	s_philo_args {
