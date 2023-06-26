@@ -34,13 +34,13 @@ int	parse_input(int argc, char *argv[], t_philo_args *philo_args_ptr)
 		|| (ft_atoi_safe(argv[3], &philo_args.time_to_eat))
 		|| (ft_atoi_safe(argv[4], &philo_args.time_to_sleep)))
 	{
-		printf("\nUsage: philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n\nphilo: error: You must provide values not grater than MAX INT, nor lower than MIN INT.\n");
+		printf("\nUsage: philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n\nphilo: error: You must provide values not grater than MAX INT (2147483647).\n");
 		return (-1);
 	}
 	if (argc == 6)
 		if (ft_atoi_safe(argv[5], &philo_args.number_of_times_each_philosopher_must_eat))
 		{
-			printf("\nUsage: philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n\nphilo: error: You must provide values not grater than MAX INT, nor lower than MIN INT.\n");
+			printf("\nUsage: philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n\nphilo: error: You must provide values not grater than MAX INT (2147483647).\n");
 			return (-1);
 		}
 	return (0);
