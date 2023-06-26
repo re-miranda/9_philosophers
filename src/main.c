@@ -14,18 +14,18 @@
 
 void	init_info(t_philo_info *info_ptr)
 {
-	t_philo_info	info;
+	pthread_mutex_t	*mutex_ptr;
 
-	info = *info_ptr;
-	pthread_mutex_init(&info.print_mutex, NULL);
+	mutex_ptr = &info_ptr->print_mutex;
+	pthread_mutex_init(mutex_ptr, NULL);
 }
 
 void	init_destroy(t_philo_info *info_ptr)
 {
-	t_philo_info	info;
+	pthread_mutex_t	*mutex_ptr;
 
-	info = *info_ptr;
-	pthread_mutex_destroy(&info.print_mutex);
+	mutex_ptr = &info_ptr->print_mutex;
+	pthread_mutex_destroy(mutex_ptr);
 }
 
 int	main(int argc, char *argv[])
@@ -34,7 +34,7 @@ int	main(int argc, char *argv[])
 	pthread_t	t_tdata;
 	pthread_t	t_tdata2;
 
-	if (parse_input(argc, argv, &info.args))
+	if (parse_input(argc, argv, &info))
 		return (-1);
 	init_info(&info);
 	if (pthread_create(&t_tdata, NULL, &philo_brain, (void *)&info.print_mutex))

@@ -24,7 +24,7 @@ void	*ft_calloc(size_t variable_size, int amount);
 int		ft_atoi_safe(char *str, int *result_ptr);
 void	ft_putendl_fd(char *s, int fd);
 
-int		parse_input(int argc, char *argv[], t_philo_args *philo_args_ptr);
+int		parse_input(int argc, char *argv[], t_philo_info *philo_info_ptr);
 void	*philo_brain(void *mutex);
 void	philo_think(void *mutex);
 void	philo_eat(void *mutex);
