@@ -20,17 +20,29 @@ int	parse_input(int argc, char *argv[], t_philo_args *philo_args_ptr)
 
 	philo_args = *philo_args_ptr;
 	if (argc != 5 && argc != 6)
+	{
+		printf("\nUsage: philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n\nphilo: error: You must provide 4 or 5 arguments.\n");
 		return (-1);
+	}
 	if (assert_there_are_only_digits(argv))
+	{
+		printf("\nUsage: philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n\nphilo: error: You must provide only numeric characters.\n");
 		return (-1);
+	}
 	if (ft_atoi_safe(argv[1], &philo_args.number_of_philosophers)
 		|| (ft_atoi_safe(argv[2], &philo_args.time_to_die))
 		|| (ft_atoi_safe(argv[3], &philo_args.time_to_eat))
 		|| (ft_atoi_safe(argv[4], &philo_args.time_to_sleep)))
+	{
+		printf("\nUsage: philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n\nphilo: error: You must provide values not grater than MAX INT, nor lower than MIN INT.\n");
 		return (-1);
+	}
 	if (argc == 6)
 		if (ft_atoi_safe(argv[5], &philo_args.number_of_times_each_philosopher_must_eat))
+		{
+			printf("\nUsage: philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n\nphilo: error: You must provide values not grater than MAX INT, nor lower than MIN INT.\n");
 			return (-1);
+		}
 	return (0);
 }
 

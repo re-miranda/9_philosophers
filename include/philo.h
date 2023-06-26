@@ -16,6 +16,7 @@
 # include <pthread.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 # include "philo_defines.h"
 
 int		ft_isdigit(char c);
