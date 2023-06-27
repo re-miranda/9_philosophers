@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:59 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/06/21 17:36:50 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:55:43 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,10 @@ void	*philo_brain(void *mutex);
 void	philo_think(void *mutex);
 void	philo_eat(void *mutex);
 void	philo_sleep(void *mutex);
+
+int		join_threads(t_philo_info info);
+int		launch_threads(t_philo_info *info);
+int		init_destroy(t_philo_info info, int return_value);
+int		init_mutex(t_philo_info *info_ptr);
 
 #endif

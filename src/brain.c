@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   brain.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:52 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/06/27 17:50:02 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:50:19 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char *argv[])
+static int	assert_is_alive(void *mutex)
 {
-	t_philo_info	info;
+	static int	counter;
 
-	info.forks = NULL;
-	info.tdata = NULL;
-	if (parse_input(argc, argv, &info))
-		return (-1);
-	if (init_mutex(&info))
-		return (-1);
-	info.forks = malloc(sizeof(pthread_mutex_t) * info.args.number_of_philosophers);
-	info.tdata = malloc(sizeof(pthread_t) * info.args.number_of_philosophers);
-	if (!info.forks || !info.tdata)
-		return (init_destroy(info, -1));
-	if (launch_threads(&info))
-		return (init_destroy(info, -1));
-	if (join_threads(info))
-		return (init_destroy(info, -1));
-	init_destroy(info, 0);
-	return (0);
+	pthread_mutex_lock(mutex);
+	if (counter++ > 9)
+	{
+		pthread_mutex_unlock(mutex);
+		return (0);
+	}
+	pthread_mutex_unlock(mutex);
+	return (1);
 }
 
+void	*philo_brain(void *mutex)
+{
+	while (assert_is_alive(mutex))
+	{
+		philo_think(mutex);
+		philo_eat(mutex);
+		philo_sleep(mutex);
+		pthread_mutex_lock(mutex);
+		ft_putendl_fd("end of brain while block", 1);
+		pthread_mutex_unlock(mutex);
+	}
+	return (NULL);
+}

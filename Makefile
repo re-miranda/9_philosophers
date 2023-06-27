@@ -5,6 +5,8 @@ SRC	+= src/main.c
 SRC	+= src/actions.c
 SRC	+= src/ft.c
 SRC	+= src/parse.c
+SRC	+= src/threads_handler.c
+SRC	+= src/brain.c
 OBJ	= $(SRC:%.c=%.o)
 PATH_HEADERS += include/
 HEADERS	+=	$(PATH_HEADERS)philo.h

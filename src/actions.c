@@ -24,8 +24,11 @@ static void	release_fork_pair(void)
 
 void	philo_think(void *mutex)
 {
+	struct timeval	tv;
+
 	pthread_mutex_lock(mutex);
-	ft_putendl_fd("Philosopher is thinking", 1);
+	gettimeofday(&tv, NULL);
+	printf("%li Philosopher is thinking\n", tv.tv_usec / 1000);
 	pthread_mutex_unlock(mutex);
 	while (get_fork_pair())
 		continue ;
