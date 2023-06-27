@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:04:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/06/21 17:36:51 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:55:20 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	philo_think(void *mutex)
 void	philo_eat(void *mutex)
 {
 	pthread_mutex_lock(mutex);
-	ft_putendl_fd("Philosopher is eating", 1);
+	printf("Philosopher is eating\n");
 	pthread_mutex_unlock(mutex);
 	usleep(1000000);
 	release_fork_pair();
@@ -46,7 +46,7 @@ void	philo_eat(void *mutex)
 void	philo_sleep(void *mutex)
 {
 	pthread_mutex_lock(mutex);
-	ft_putendl_fd("Philosopher is sleeping", 1);
+	printf("Philosopher is sleeping\n");
 	pthread_mutex_unlock(mutex);
 	usleep(1000000);
 }
