@@ -17,7 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "philo_defines.h"
+# include <sys/time.h>
+# include "defines.h"
 
 int		ft_isdigit(char c);
 void	*ft_calloc(size_t variable_size, int amount);

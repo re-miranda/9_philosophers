@@ -8,7 +8,7 @@ SRC	+= src/parse.c
 OBJ	= $(SRC:%.c=%.o)
 PATH_HEADERS += include/
 HEADERS	+=	$(PATH_HEADERS)philo.h
-HEADERS	+=	$(PATH_HEADERS)philo_defines.h
+HEADERS	+=	$(PATH_HEADERS)defines.h
 
 $(NAME):	$(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(PATH_HEADERS:%=-I%)

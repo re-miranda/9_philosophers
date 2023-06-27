@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_defines.h                                    :+:      :+:    :+:   */
+/*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:56 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/06/22 22:29:04 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:50:33 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_DEFINES_H
-# define PHILO_DEFINES_H
+#ifndef DEFINES_H
+# define DEFINES_H
 
 typedef struct	s_philo_args {
 	int	number_of_philosophers;
@@ -26,6 +26,7 @@ typedef struct	s_philo_info {
 	t_philo_args	args;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	*forks;
+	pthread_t	*tdata;
 }	t_philo_info;
 
 #endif
