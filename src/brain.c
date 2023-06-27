@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:52 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/06/27 17:50:19 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:59:27 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	*philo_brain(void *mutex)
 		philo_eat(mutex);
 		philo_sleep(mutex);
 		pthread_mutex_lock(mutex);
-		ft_putendl_fd("end of brain while block", 1);
+		printf("end of brain while block\n");
 		pthread_mutex_unlock(mutex);
 	}
 	return (NULL);
