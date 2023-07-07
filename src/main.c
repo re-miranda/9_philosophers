@@ -22,15 +22,15 @@ int	main(int argc, char *argv[])
 		return (-1);
 	if (init_mutex(&info))
 		return (-1);
-	info.forks = malloc(sizeof(pthread_mutex_t) * info.args.number_of_philosophers);
 	info.tdata = malloc(sizeof(pthread_t) * info.args.number_of_philosophers);
-	if (!info.forks || !info.tdata)
-		return (init_destroy(info, -1));
+	if (!info.tdata)
+		return (early_destroy(info, -1));
+	gettimeofday(&info.start_tv, NULL);
 	if (launch_threads(&info))
-		return (init_destroy(info, -1));
+		return (early_destroy(info, -1));
 	if (join_threads(info))
-		return (init_destroy(info, -1));
-	init_destroy(info, 0);
+		return (early_destroy(info, -1));
+	early_destroy(info, 0);
 	return (0);
 }
 

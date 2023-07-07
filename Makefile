@@ -20,7 +20,7 @@ $(NAME):	$(OBJ)
 
 all:	$(NAME)
 
-clean:
+clean: all
 	rm -rf $(OBJ)
 
 fclean:	clean
@@ -28,5 +28,8 @@ fclean:	clean
 
 re:	fclean all
 
-.PHONY:	all clean fclean re
+val: all
+	valgrind -s --log-fd=9 --tool=helgrind ./philo 200 8000 800 800 9>memcheck.log
+
+.PHONY:	all clean fclean re val
 

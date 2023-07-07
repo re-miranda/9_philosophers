@@ -13,6 +13,8 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
+# define USEC_DIVISOR 1
+
 typedef struct s_philo_philo {
 	int	philosopher_id;
 	int	is_holding_2_forks;
@@ -36,6 +38,7 @@ typedef struct s_philo_info {
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	*forks;
 	pthread_t		*tdata;
+	struct timeval	start_tv;
 }	t_philo_info;
 
 #endif

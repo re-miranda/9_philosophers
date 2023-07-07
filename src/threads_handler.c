@@ -31,9 +31,15 @@ int	init_mutex(t_philo_info *info_ptr)
 	return (0);
 }
 
-int	init_destroy(t_philo_info info, int return_value)
+int	early_destroy(t_philo_info info, int return_value)
 {
+	int	index;
+
+	index = 0;
+	pthread_mutex_destroy(&info.index_mutex);
 	pthread_mutex_destroy(&info.print_mutex);
+	while (index < info.args.number_of_philosophers)
+		pthread_mutex_destroy(&info.forks[index++]);
 	if (info.forks)
 		free(info.forks);
 	if (info.tdata)
@@ -63,3 +69,11 @@ int	join_threads(t_philo_info info)
 	return (0);
 }
 
+long int	elapsed_time_in_msec(t_philo_info *info_ptr, struct timeval	tv)
+{
+	long int	total_in_mseconds;
+
+	total_in_mseconds = (tv.tv_sec - info_ptr->start_tv.tv_sec) * 1000;
+	total_in_mseconds += (tv.tv_usec - info_ptr->start_tv.tv_usec) / 1000;
+	return (total_in_mseconds);
+}
