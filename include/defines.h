@@ -6,24 +6,23 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:56 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/05 01:49:34 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/14 22:20:40 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define USEC_DIVISOR 1
+# define GLOBAL_USLEEP 100
 
-typedef struct s_philo_philo {
-	int	philosopher_id;
-	int	is_holding_2_forks;
-	int	time_since_last_meal;
-	int	number_of_meals;
-}	t_philo_philo;
+typedef struct s_philo_health {
+	struct timeval	start_tv;
+	struct timeval	meal_tv;
+	int	meal_count;
+}	t_philo_health;
 
 typedef struct s_philo_args {
-	int	number_of_philosophers;
+	int	nb_of_philos;
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
@@ -32,13 +31,17 @@ typedef struct s_philo_args {
 }	t_philo_args;
 
 typedef struct s_philo_info {
-	t_philo_args	args;
 	int				index;
+	int				print_allowed;
+	int				simulation_continue;
 	pthread_mutex_t	index_mutex;
 	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	simulation_mutex;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	*health_data_mutex;
 	pthread_t		*tdata;
-	struct timeval	start_tv;
+	t_philo_args	args;
+	t_philo_health	*health_data;
 }	t_philo_info;
 
 #endif

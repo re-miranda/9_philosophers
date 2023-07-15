@@ -3,10 +3,11 @@ CC	= gcc
 CFLAGS	= -Wall -Werror -Wextra -g3 -pthread
 SRC	+= src/main.c
 SRC	+= src/actions.c
+SRC	+= src/brain.c
 SRC	+= src/ft.c
 SRC	+= src/parse.c
+SRC	+= src/simulation_helper.c
 SRC	+= src/threads_handler.c
-SRC	+= src/brain.c
 OBJ	= $(SRC:%.c=%.o)
 PATH_HEADERS += include/
 HEADERS	+=	$(PATH_HEADERS)philo.h
@@ -29,7 +30,7 @@ fclean:	clean
 re:	fclean all
 
 val: all
-	valgrind -s --log-fd=9 --tool=helgrind ./philo 200 8000 800 800 9>memcheck.log
+	valgrind -s --log-fd=9 --tool=helgrind 9>memcheck.log ./philo 5 800 200 200 5
 
 .PHONY:	all clean fclean re val
 
