@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:59 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/14 23:39:25 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/15 02:03:14 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int			join_threads(t_philo_info info);
 
 long int	elapsed_time(struct timeval *past, struct timeval *present);
 int			assert_simulation_is_running(t_philo_info *info_ptr);
+int			init_health_data(t_philo_info *info_ptr);
 
 #endif

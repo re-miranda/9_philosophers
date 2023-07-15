@@ -5,6 +5,7 @@ SRC	+= src/main.c
 SRC	+= src/actions.c
 SRC	+= src/brain.c
 SRC	+= src/ft.c
+SRC	+= src/init.c
 SRC	+= src/parse.c
 SRC	+= src/simulation_helper.c
 SRC	+= src/threads_handler.c

@@ -6,14 +6,13 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:52 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/15 00:37:37 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/15 02:02:39 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 static void	supervise_philosophers(t_philo_info *info_ptr);
-static int	init_health_data(t_philo_info *info_ptr);
 
 int	main(int argc, char *argv[])
 {
@@ -39,25 +38,6 @@ int	main(int argc, char *argv[])
 	if (join_threads(info))
 		return (early_destroy(info, -1));
 	early_destroy(info, 0);
-	return (0);
-}
-
-static int	init_health_data(t_philo_info *info_ptr)
-{
-	int	index;
-	int	meal_arg;
-
-	index = 0;
-	info_ptr->health_data = malloc(sizeof(t_philo_health) * info_ptr->args.nb_of_philos);
-	if (!info_ptr->health_data)
-		return (-1);
-	memset(info_ptr->health_data, 0, sizeof(t_philo_health) * info_ptr->args.nb_of_philos);
-	if (info_ptr->args.has_fifth)
-		meal_arg = info_ptr->args.number_of_times_each_philosopher_must_eat;
-	else
-		meal_arg = -1;
-	while (index < info_ptr->args.nb_of_philos)
-		info_ptr->health_data[index++].meal_count = meal_arg;
 	return (0);
 }
 

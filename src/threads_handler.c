@@ -6,41 +6,11 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:52 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/14 23:38:29 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/15 02:05:51 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	init_mutex(t_philo_info *info_ptr)
-{
-	int	index;
-
-	index = 0;
-	info_ptr->index = 0;
-	info_ptr->print_allowed = 1;
-	info_ptr->simulation_continue = 1;
-	if (pthread_mutex_init(&info_ptr->index_mutex, NULL))
-		return (-1);
-	if (pthread_mutex_init(&info_ptr->print_mutex, NULL))
-		return (-1);
-	if (pthread_mutex_init(&info_ptr->simulation_mutex, NULL))
-		return (-1);
-	info_ptr->forks = malloc(sizeof(pthread_mutex_t) * info_ptr->args.nb_of_philos);
-	if (!info_ptr->forks)
-		return (-1);
-	while (index < info_ptr->args.nb_of_philos)
-		if (pthread_mutex_init(&info_ptr->forks[index++], NULL))
-			return (-1);
-	index = 0;
-	info_ptr->health_data_mutex = malloc(sizeof(pthread_mutex_t) * info_ptr->args.nb_of_philos);
-	if (!info_ptr->health_data_mutex)
-		return (-1);
-	while (index < info_ptr->args.nb_of_philos)
-		if (pthread_mutex_init(&info_ptr->health_data_mutex[index++], NULL))
-			return (-1);
-	return (0);
-}
 
 int	early_destroy(t_philo_info info, int return_value)
 {
