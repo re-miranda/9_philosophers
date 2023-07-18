@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:52 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/15 00:02:57 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/15 04:08:33 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,9 @@ static int	meal_limit(t_philo_info *info_ptr, int philo_id)
 	{
 		pthread_mutex_lock(&info_ptr->print_mutex);
 		if (info_ptr->print_allowed)
-			printf("Philosopher %i meallimit reached\n", philo_id);
+			printf("%i had enough\n", philo_id);
 		pthread_mutex_unlock(&info_ptr->print_mutex);
 	}
-	return (continue_thread);
-}
-
-static int	assert_is_alive(t_philo_info *info_ptr)
-{
-	int				continue_thread;
-
-	pthread_mutex_lock(&info_ptr->print_mutex);
-	continue_thread = info_ptr->print_allowed;
-	pthread_mutex_unlock(&info_ptr->print_mutex);
 	return (continue_thread);
 }
 
@@ -62,8 +52,7 @@ void	*philo_brain(void *info_void_ptr)
 
 	info_ptr = (t_philo_info *)info_void_ptr;
 	philo_id = init_id(info_ptr);
-	usleep(GLOBAL_USLEEP);
-	while (assert_is_alive(info_ptr))
+	while (assert_simulation_is_running(info_ptr))
 	{
 		philo_think(info_ptr, philo_id);
 		philo_eat(info_ptr, philo_id);

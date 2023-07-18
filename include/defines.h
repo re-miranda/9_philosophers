@@ -6,14 +6,26 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:56 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/14 22:20:40 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 20:37:45 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define GLOBAL_USLEEP 100
+# define GLOBAL_USLEEP 200
+# define USAGE_STR_0 "\nUsage: philo nb_of_philos time_to_die time_to_eat \
+time_to_sleep [meals_quota]\n\nphilo: \
+error: You must provide 4 or 5 arguments.\n"
+# define USAGE_STR_1 "\nUsage: philo nb_of_philos time_to_die time_to_eat \
+time_to_sleep [meals_quota]\n\nphilo: \
+error: You must provide only numeric characters.\n"
+# define USAGE_STR_2 "\nUsage: philo nb_of_philos time_to_die time_to_eat \
+time_to_sleep [meals_quota]\n\nphilo: \
+error: You must provide values not grater than MAX INT (2147483647).\n"
+# define USAGE_STR_3 "\nUsage: philo nb_of_philos time_to_die time_to_eat \
+time_to_sleep [meals_quota]\n\nphilo: \
+error: You must provide values not grater than MAX INT (2147483647).\n"
 
 typedef struct s_philo_health {
 	struct timeval	start_tv;
@@ -27,7 +39,7 @@ typedef struct s_philo_args {
 	int	time_to_eat;
 	int	time_to_sleep;
 	int	has_fifth;
-	int	number_of_times_each_philosopher_must_eat;
+	int	meals_quota;
 }	t_philo_args;
 
 typedef struct s_philo_info {

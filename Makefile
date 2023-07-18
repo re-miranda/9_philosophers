@@ -3,6 +3,7 @@ CC	= gcc
 CFLAGS	= -Wall -Werror -Wextra -g3 -pthread
 SRC	+= src/main.c
 SRC	+= src/actions.c
+SRC	+= src/actions_helper.c
 SRC	+= src/brain.c
 SRC	+= src/ft.c
 SRC	+= src/init.c
