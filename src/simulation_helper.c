@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 23:35:19 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 20:29:55 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 21:13:21 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	supervise_philosophers(t_philo_info *info_ptr)
 	{
 		if (!assert_simulation_is_running(info_ptr))
 			break ;
+		usleep(5000);
 		if (update_simulation_status(info_ptr, &active_philosophers_count))
 			break ;
 	}
@@ -74,7 +75,6 @@ static int	update_simulation_status(t_philo_info *info_ptr, int *check_amount)
 	check_amount[0] = 0;
 	while (philo_id-- && !interrupt_flag)
 	{
-		usleep(50);
 		if (info_ptr->health_data[philo_id].meal_count != 0)
 		{
 			check_amount[0]++;

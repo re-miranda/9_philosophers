@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:52 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/15 02:57:41 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 21:12:27 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int	launch_threads(t_philo_info *info)
 		if (pthread_create(&info->tdata[index++], NULL, &philo_brain, (void *)info))
 			return (-1);
 	index = 0;
-	// while (index < info->args.nb_of_philos)
-	// 	if (pthread_detach(info->tdata[index++]))
-	// 		return (-1);
+	while (index < info->args.nb_of_philos)
+		if (pthread_detach(info->tdata[index++]))
+			return (-1);
 	return (0);
 }
 
