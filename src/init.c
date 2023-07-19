@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 02:01:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 22:39:28 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:42:55 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int	init(t_philo_info *info_ptr)
 	info_ptr->health_data = NULL;
 	info_ptr->forks = NULL;
 	info_ptr->tdata = NULL;
+	info_ptr->index = 0;
+	info_ptr->print_allowed = 1;
+	info_ptr->simulation_continue = 1;
 	if (init_health_data(info_ptr))
 		return (-1);
 	if (init_mutex(info_ptr))
@@ -34,9 +37,11 @@ static int	init_health_data(t_philo_info *info_ptr)
 {
 	int	index;
 	int	meal_arg;
+	int	nb_of_philo;
 
 	index = 0;
-	info_ptr->health_data = ft_calloc(sizeof(t_philo_health), info_ptr->args.nb_of_philo);
+	nb_of_philo = info_ptr->args.nb_of_philo;
+	info_ptr->health_data = ft_calloc(sizeof(t_philo_health), nb_of_philo);
 	if (!info_ptr->health_data)
 		return (-1);
 	if (info_ptr->args.has_fifth)
@@ -50,9 +55,6 @@ static int	init_health_data(t_philo_info *info_ptr)
 
 static int	init_mutex(t_philo_info *info)
 {
-	info->index = 0;
-	info->print_allowed = 1;
-	info->simulation_continue = 1;
 	if (pthread_mutex_init(&info->index_mutex, NULL))
 		return (-1);
 	if (pthread_mutex_init(&info->print_mutex, NULL))
