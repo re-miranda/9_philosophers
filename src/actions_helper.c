@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:04:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 21:31:03 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:10:57 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,13 @@ void	set_meal_tv(t_philo_info *info_ptr, int philo_id)
 	pthread_mutex_lock(&info_ptr->health_data_mutex[philo_id]);
 	gettimeofday(&info_ptr->health_data[philo_id].meal_tv, NULL);
 	pthread_mutex_unlock(&info_ptr->health_data_mutex[philo_id]);
+}
+
+long int	get_elapsed_time(struct timeval *past, struct timeval *present)
+{
+	long int	result_mseconds;
+
+	result_mseconds = (present->tv_sec - past->tv_sec) * 1000;
+	result_mseconds += (present->tv_usec - past->tv_usec) / 1000;
+	return (result_mseconds);
 }

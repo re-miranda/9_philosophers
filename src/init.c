@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 02:01:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 17:03:50 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:00:56 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@ static int	init_health_data(t_philo_info *info_ptr)
 	int	meal_arg;
 
 	index = 0;
-	info_ptr->health_data = malloc(sizeof(t_philo_health) * info_ptr->args.nb_of_philos);
+	info_ptr->health_data = ft_calloc(sizeof(t_philo_health), info_ptr->args.nb_of_philos);
 	if (!info_ptr->health_data)
 		return (-1);
-	memset(info_ptr->health_data, 0, sizeof(t_philo_health) * info_ptr->args.nb_of_philos);
 	if (info_ptr->args.has_fifth)
 		meal_arg = info_ptr->args.meals_quota;
 	else
@@ -51,9 +50,6 @@ static int	init_health_data(t_philo_info *info_ptr)
 
 static int	init_mutex(t_philo_info *info_ptr)
 {
-	int	index;
-
-	index = 0;
 	info_ptr->index = 0;
 	info_ptr->print_allowed = 1;
 	info_ptr->simulation_continue = 1;
@@ -66,15 +62,16 @@ static int	init_mutex(t_philo_info *info_ptr)
 	info_ptr->forks = malloc(sizeof(pthread_mutex_t) * info_ptr->args.nb_of_philos);
 	if (!info_ptr->forks)
 		return (-1);
-	while (index < info_ptr->args.nb_of_philos)
-		if (pthread_mutex_init(&info_ptr->forks[index++], NULL))
+	while (info_ptr->index < info_ptr->args.nb_of_philos)
+		if (pthread_mutex_init(&info_ptr->forks[info_ptr->index++], NULL))
 			return (-1);
-	index = 0;
+	info_ptr->index = 0;
 	info_ptr->health_data_mutex = malloc(sizeof(pthread_mutex_t) * info_ptr->args.nb_of_philos);
 	if (!info_ptr->health_data_mutex)
 		return (-1);
-	while (index < info_ptr->args.nb_of_philos)
-		if (pthread_mutex_init(&info_ptr->health_data_mutex[index++], NULL))
+	while (info_ptr->index < info_ptr->args.nb_of_philos)
+		if (pthread_mutex_init(&info_ptr->health_data_mutex[info_ptr->index++], NULL))
 			return (-1);
+	info_ptr->index = 0;
 	return (0);
 }

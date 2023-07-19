@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:59 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 16:55:53 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:10:59 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void		philo_sleep(t_philo_info *info, int philo_id);
 // SIMULATION_HELPER.C
 int			assert_simulation_is_running(t_philo_info *info_ptr);
 long int	get_elapsed_time(struct timeval *past, struct timeval *present);
-int			hold_supervisor(t_philo_info *info_ptr);
 void		supervise_philosophers(t_philo_info *info_ptr);
 // FT.C
 int			ft_isdigit(char c);
