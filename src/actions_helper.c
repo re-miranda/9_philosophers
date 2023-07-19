@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:04:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 22:47:04 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:56:48 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	print_time_str(t_philo_info *info_ptr, int philo_id, char *str)
 	pthread_mutex_lock(&info_ptr->print_mutex);
 	gettimeofday(&tv, NULL);
 	start_tv = info_ptr->health_data[philo_id].start_tv;
-	pthread_mutex_unlock(&info_ptr->print_mutex);
 	e_time = elapsed_time(&start_tv, &tv);
 	if (assert_simulation_is_running(info_ptr))
 		printf("%ld %i %s\n", e_time, philo_id, str);
+	pthread_mutex_unlock(&info_ptr->print_mutex);
 }
 
 void	get_fork_pair(t_philo_info *info_ptr, int philo_id)

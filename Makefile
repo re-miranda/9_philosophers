@@ -32,7 +32,7 @@ fclean:	clean
 re:	fclean all
 
 val: all
-	valgrind -s --log-fd=9 --tool=helgrind 9>memcheck.log ./philo 5 800 200 200 5
+	valgrind -s --log-fd=9 --tool=helgrind 9>memcheck.log ./philo 5 800 200 200 2
 
 .PHONY:	all clean fclean re val
 
