@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:04:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 22:28:21 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:30:32 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	print_time_str(t_philo_info *info_ptr, int philo_id, char *str)
 {
-	t_tv	tv;
-	t_tv	start_tv;
-	long int		elapsed_time;
+	t_tv		tv;
+	t_tv		start_tv;
+	long int	elapsed_time;
 
 	pthread_mutex_lock(&info_ptr->print_mutex);
 	gettimeofday(&tv, NULL);
