@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 23:35:19 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 22:39:28 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:46:01 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,27 @@ static int	hold_supervisor(t_philo_info *info_ptr)
 static int	update_simulation_status(t_philo_info *info_ptr, int *check_amount)
 {
 	static int		interrupt_flag;
-	static int		philo_id;
-	static long int	elapsed_time;
+	static int		id;
+	static long int	e_time;
 	static t_tv		tv;
 
-	philo_id = info_ptr->args.nb_of_philo;
+	id = info_ptr->args.nb_of_philo;
 	check_amount[0] = 0;
-	while (philo_id-- && !interrupt_flag)
+	while (id-- && !interrupt_flag)
 	{
-		if (info_ptr->health_data[philo_id].meal_count != 0)
+		if (info_ptr->health_data[id].meal_count != 0)
 		{
 			check_amount[0]++;
-			pthread_mutex_lock(&info_ptr->health_mtx[philo_id]);
+			pthread_mutex_lock(&info_ptr->health_mtx[id]);
 			gettimeofday(&tv, NULL);
-			elapsed_time = get_elapsed_time(&info_ptr->health_data[philo_id].meal_tv, &tv);
-			if (elapsed_time > info_ptr->args.time_to_die)
+			e_time = elapsed_time(&info_ptr->health_data[id].meal_tv, &tv);
+			if (e_time > info_ptr->args.time_to_die)
 			{
 				interrupt_simulation(info_ptr, &interrupt_flag);
-				elapsed_time = get_elapsed_time(&info_ptr->health_data[philo_id].start_tv, &tv);
-				printf("%ld %i died\n", elapsed_time, philo_id);
+				e_time = elapsed_time(&info_ptr->health_data[id].start_tv, &tv);
+				printf("%ld %i died\n", e_time, id);
 			}
-			pthread_mutex_unlock(&info_ptr->health_mtx[philo_id]);
+			pthread_mutex_unlock(&info_ptr->health_mtx[id]);
 		}
 	}
 	return (interrupt_flag);

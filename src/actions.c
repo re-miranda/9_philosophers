@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:04:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 22:26:46 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:45:27 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	philo_sleep(t_philo_info *info_ptr, int philo_id)
 
 static void	wait_dinner(t_philo_info *info_ptr, t_tv tv1, t_tv tv2)
 {
-	while (get_elapsed_time(&tv1, &tv2) < (long int)info_ptr->args.time_to_eat)
+	while (elapsed_time(&tv1, &tv2) < (long int)info_ptr->args.time_to_eat)
 	{
 		gettimeofday(&tv2, NULL);
 		usleep(GLOBAL_USLEEP);
@@ -59,7 +59,7 @@ static void	wait_dinner(t_philo_info *info_ptr, t_tv tv1, t_tv tv2)
 
 static void	wait_sleep(t_philo_info *info_ptr, t_tv tv1, t_tv tv2)
 {
-	while (get_elapsed_time(&tv1, &tv2) < (long int)info_ptr->args.time_to_eat)
+	while (elapsed_time(&tv1, &tv2) < (long int)info_ptr->args.time_to_eat)
 	{
 		gettimeofday(&tv2, NULL);
 		usleep(GLOBAL_USLEEP);

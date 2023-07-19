@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:04:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 22:39:28 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:47:04 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ void	print_time_str(t_philo_info *info_ptr, int philo_id, char *str)
 {
 	t_tv		tv;
 	t_tv		start_tv;
-	long int	elapsed_time;
+	long int	e_time;
 
 	pthread_mutex_lock(&info_ptr->print_mutex);
 	gettimeofday(&tv, NULL);
 	start_tv = info_ptr->health_data[philo_id].start_tv;
 	pthread_mutex_unlock(&info_ptr->print_mutex);
-	elapsed_time = get_elapsed_time(&start_tv, &tv);
+	e_time = elapsed_time(&start_tv, &tv);
 	if (assert_simulation_is_running(info_ptr))
-		printf("%ld %i %s\n", elapsed_time, philo_id, str);
+		printf("%ld %i %s\n", e_time, philo_id, str);
 }
 
 void	get_fork_pair(t_philo_info *info_ptr, int philo_id)
@@ -67,7 +67,7 @@ void	set_meal_tv(t_philo_info *info_ptr, int philo_id)
 	pthread_mutex_unlock(&info_ptr->health_mtx[philo_id]);
 }
 
-long int	get_elapsed_time(t_tv *past, t_tv *present)
+long int	elapsed_time(t_tv *past, t_tv *present)
 {
 	long int	result_mseconds;
 
