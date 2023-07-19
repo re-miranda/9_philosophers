@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:56 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 21:04:45 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 21:21:16 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ error: You must provide values not grater than MAX INT (2147483647).\n"
 typedef struct s_philo_health {
 	struct timeval	start_tv;
 	struct timeval	meal_tv;
-	int	meal_count;
+	int				meal_count;
 }	t_philo_health;
 
 typedef struct s_philo_args {
