@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:04:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 22:10:57 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:28:21 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	print_time_str(t_philo_info *info_ptr, int philo_id, char *str)
 {
-	struct timeval	tv;
-	struct timeval	start_tv;
+	t_tv	tv;
+	t_tv	start_tv;
 	long int		elapsed_time;
 
 	pthread_mutex_lock(&info_ptr->print_mutex);
@@ -67,7 +67,7 @@ void	set_meal_tv(t_philo_info *info_ptr, int philo_id)
 	pthread_mutex_unlock(&info_ptr->health_data_mutex[philo_id]);
 }
 
-long int	get_elapsed_time(struct timeval *past, struct timeval *present)
+long int	get_elapsed_time(t_tv *past, t_tv *present)
 {
 	long int	result_mseconds;
 

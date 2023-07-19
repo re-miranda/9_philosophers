@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:56 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 21:42:56 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:28:42 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ error: You must provide only numeric characters.\n"
 time_to_sleep [meals_quota]\n\nphilo: \
 error: You must provide values not grater than MAX INT (2147483647).\n"
 
+typedef struct timeval t_tv;
+
 typedef struct s_philo_health {
-	struct timeval	start_tv;
-	struct timeval	meal_tv;
+	t_tv	start_tv;
+	t_tv	meal_tv;
 	int				meal_count;
 }	t_philo_health;
 

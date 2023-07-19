@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 23:35:19 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 22:10:42 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:28:21 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	update_simulation_status(t_philo_info *info_ptr, int *check_amount)
 	static int				interrupt_flag;
 	static int				philo_id;
 	static long int			elapsed_time;
-	static struct timeval	tv;
+	static t_tv	tv;
 
 	philo_id = info_ptr->args.nb_of_philos;
 	check_amount[0] = 0;
