@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:04:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 22:30:32 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:39:28 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	get_fork_pair(t_philo_info *info_ptr, int philo_id)
 		pthread_mutex_lock(&info_ptr->forks[philo_id]);
 		print_time_str(info_ptr, philo_id, "has taken a fork");
 	}
-	if (philo_id + 1 != info_ptr->args.nb_of_philos)
+	if (philo_id + 1 != info_ptr->args.nb_of_philo)
 	{
 		pthread_mutex_lock(&info_ptr->forks[philo_id + 1]);
 		print_time_str(info_ptr, philo_id, "has taken a fork");
@@ -53,7 +53,7 @@ void	get_fork_pair(t_philo_info *info_ptr, int philo_id)
 
 void	release_fork_pair(t_philo_info *info_ptr, int philo_id)
 {
-	if (philo_id + 1 != info_ptr->args.nb_of_philos)
+	if (philo_id + 1 != info_ptr->args.nb_of_philo)
 		pthread_mutex_unlock(&info_ptr->forks[philo_id + 1]);
 	else
 		pthread_mutex_unlock(&info_ptr->forks[0]);
@@ -62,9 +62,9 @@ void	release_fork_pair(t_philo_info *info_ptr, int philo_id)
 
 void	set_meal_tv(t_philo_info *info_ptr, int philo_id)
 {
-	pthread_mutex_lock(&info_ptr->health_data_mutex[philo_id]);
+	pthread_mutex_lock(&info_ptr->health_mtx[philo_id]);
 	gettimeofday(&info_ptr->health_data[philo_id].meal_tv, NULL);
-	pthread_mutex_unlock(&info_ptr->health_data_mutex[philo_id]);
+	pthread_mutex_unlock(&info_ptr->health_mtx[philo_id]);
 }
 
 long int	get_elapsed_time(t_tv *past, t_tv *present)

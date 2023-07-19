@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 23:35:19 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 22:30:09 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:39:28 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	hold_supervisor(t_philo_info *info_ptr)
 
 	value = 1;
 	pthread_mutex_lock(&info_ptr->index_mutex);
-	if (info_ptr->index >= info_ptr->args.nb_of_philos)
+	if (info_ptr->index >= info_ptr->args.nb_of_philo)
 		value = 0;
 	pthread_mutex_unlock(&info_ptr->index_mutex);
 	return (value);
@@ -64,14 +64,14 @@ static int	update_simulation_status(t_philo_info *info_ptr, int *check_amount)
 	static long int	elapsed_time;
 	static t_tv		tv;
 
-	philo_id = info_ptr->args.nb_of_philos;
+	philo_id = info_ptr->args.nb_of_philo;
 	check_amount[0] = 0;
 	while (philo_id-- && !interrupt_flag)
 	{
 		if (info_ptr->health_data[philo_id].meal_count != 0)
 		{
 			check_amount[0]++;
-			pthread_mutex_lock(&info_ptr->health_data_mutex[philo_id]);
+			pthread_mutex_lock(&info_ptr->health_mtx[philo_id]);
 			gettimeofday(&tv, NULL);
 			elapsed_time = get_elapsed_time(&info_ptr->health_data[philo_id].meal_tv, &tv);
 			if (elapsed_time > info_ptr->args.time_to_die)
@@ -80,7 +80,7 @@ static int	update_simulation_status(t_philo_info *info_ptr, int *check_amount)
 				elapsed_time = get_elapsed_time(&info_ptr->health_data[philo_id].start_tv, &tv);
 				printf("%ld %i died\n", elapsed_time, philo_id);
 			}
-			pthread_mutex_unlock(&info_ptr->health_data_mutex[philo_id]);
+			pthread_mutex_unlock(&info_ptr->health_mtx[philo_id]);
 		}
 	}
 	return (interrupt_flag);

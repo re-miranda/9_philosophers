@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:52 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/15 04:08:33 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:35:05 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static int	meal_limit(t_philo_info *info_ptr, int philo_id)
 {
 	int				continue_thread;
 
-	pthread_mutex_lock(&info_ptr->health_data_mutex[philo_id]);
+	pthread_mutex_lock(&info_ptr->health_mtx[philo_id]);
 	if (info_ptr->health_data[philo_id].meal_count > 0)
 		info_ptr->health_data[philo_id].meal_count--;
 	continue_thread = info_ptr->health_data[philo_id].meal_count;
-	pthread_mutex_unlock(&info_ptr->health_data_mutex[philo_id]);
+	pthread_mutex_unlock(&info_ptr->health_mtx[philo_id]);
 	if (!continue_thread)
 	{
 		pthread_mutex_lock(&info_ptr->print_mutex);
@@ -37,10 +37,10 @@ static int	init_id(t_philo_info *info_ptr)
 
 	pthread_mutex_lock(&info_ptr->index_mutex);
 	philo_id = info_ptr->index++;
-	pthread_mutex_lock(&info_ptr->health_data_mutex[philo_id]);
+	pthread_mutex_lock(&info_ptr->health_mtx[philo_id]);
 	gettimeofday(&info_ptr->health_data[philo_id].start_tv, NULL);
 	gettimeofday(&info_ptr->health_data[philo_id].meal_tv, NULL);
-	pthread_mutex_unlock(&info_ptr->health_data_mutex[philo_id]);
+	pthread_mutex_unlock(&info_ptr->health_mtx[philo_id]);
 	pthread_mutex_unlock(&info_ptr->index_mutex);
 	return (philo_id);
 }

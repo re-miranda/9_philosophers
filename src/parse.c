@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:09:26 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 21:43:16 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 22:39:28 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	parse_input(int argc, char *argv[], t_philo_info *philo_info_ptr)
 	}
 	if (assert_there_are_only_digits(argv))
 		return (-1);
-	if (ft_atoi_safe(argv[1], &philo_args->nb_of_philos)
+	if (ft_atoi_safe(argv[1], &philo_args->nb_of_philo)
 		|| (ft_atoi_safe(argv[2], &philo_args->time_to_die))
 		|| (ft_atoi_safe(argv[3], &philo_args->time_to_eat))
 		|| (ft_atoi_safe(argv[4], &philo_args->time_to_sleep))
