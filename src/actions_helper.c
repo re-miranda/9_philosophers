@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:04:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 21:20:16 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/18 21:31:03 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 void	print_time_str(t_philo_info *info_ptr, int philo_id, char *str)
 {
 	struct timeval	tv;
+	struct timeval	start_tv;
 	long int		elapsed_time;
 
 	pthread_mutex_lock(&info_ptr->print_mutex);
 	gettimeofday(&tv, NULL);
-	elapsed_time = get_elapsed_time(&info_ptr->health_data[philo_id].start_tv, &tv);
+	start_tv = info_ptr->health_data[philo_id].start_tv;
+	pthread_mutex_unlock(&info_ptr->print_mutex);
+	elapsed_time = get_elapsed_time(&start_tv, &tv);
 	if (assert_simulation_is_running(info_ptr))
 		printf("%ld %i %s\n", elapsed_time, philo_id, str);
-	pthread_mutex_unlock(&info_ptr->print_mutex);
 }
 
 void	get_fork_pair(t_philo_info *info_ptr, int philo_id)
