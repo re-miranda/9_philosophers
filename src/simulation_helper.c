@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 23:35:19 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 23:08:56 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/19 20:44:04 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ void	supervise_philosophers(t_philo_info *info_ptr)
 		if (update_simulation_status(info_ptr, &active_philosophers_count))
 			break ;
 	}
-	interrupt_simulation(info_ptr);
-	if (!active_philosophers_count)
-		printf("Everyone have eatten their quota.\n");
 }
 
 static int	hold_supervisor(t_philo_info *info_ptr)

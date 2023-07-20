@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:56 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/18 22:39:28 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/19 21:03:49 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ time_to_sleep [meals_quota]\n\nphilo: \
 error: You must provide 4 or 5 arguments.\n"
 # define USAGE_STR_1 "\nUsage: philo nb_of_philo time_to_die time_to_eat \
 time_to_sleep [meals_quota]\n\nphilo: \
-error: You must provide only numeric characters.\n"
+error: You must provide only numeric characters and positive values.\n"
 # define USAGE_STR_2 "\nUsage: philo nb_of_philo time_to_die time_to_eat \
 time_to_sleep [meals_quota]\n\nphilo: \
 error: You must provide values not grater than MAX INT (2147483647).\n"
