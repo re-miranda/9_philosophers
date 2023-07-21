@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:04:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/19 20:25:04 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/21 11:01:46 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,16 @@ static void	wait_dinner(t_philo_info *info_ptr, t_tv tv1, t_tv tv2)
 {
 	while (elapsed_time(&tv1, &tv2) < (long int)info_ptr->args.time_to_eat)
 	{
-		gettimeofday(&tv2, NULL);
 		usleep(GLOBAL_USLEEP);
+		gettimeofday(&tv2, NULL);
 	}
 }
 
 static void	wait_sleep(t_philo_info *info_ptr, t_tv tv1, t_tv tv2)
 {
-	while (elapsed_time(&tv1, &tv2) < (long int)info_ptr->args.time_to_eat)
+	while (elapsed_time(&tv1, &tv2) < (long int)info_ptr->args.time_to_sleep)
 	{
-		gettimeofday(&tv2, NULL);
 		usleep(GLOBAL_USLEEP);
+		gettimeofday(&tv2, NULL);
 	}
 }
