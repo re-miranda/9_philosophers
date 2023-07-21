@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:59 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/20 22:51:23 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/21 11:04:32 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include <semaphore.h>
 # include <fcntl.h>
 # include <signal.h>
-#include <sys/types.h>
-#include <sys/wait.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 # include "defines_bonus.h"
 // PARSE_BONUS.C
 int			parse_input(int argc, char *argv[], t_philo_info *philo_info_ptr);

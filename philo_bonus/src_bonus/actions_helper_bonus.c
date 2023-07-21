@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:04:10 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/20 23:36:26 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/21 11:05:20 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	set_meal_tv(t_philo_info *info_ptr, int philo_id)
 		interrupt_simulation(info_ptr, philo_id, tv);
 		return (-1);
 	}
-	if (info_ptr->health_data[philo_id].meal_count > 0 )
+	if (info_ptr->health_data[philo_id].meal_count > 0)
 		info_ptr->health_data[philo_id].meal_count--;
 	info_ptr->health_data[philo_id].meal_tv.tv_sec = tv.tv_sec;
 	info_ptr->health_data[philo_id].meal_tv.tv_usec = tv.tv_usec;

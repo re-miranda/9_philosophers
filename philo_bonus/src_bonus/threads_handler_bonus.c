@@ -6,13 +6,13 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:52 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/20 23:58:18 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/21 11:06:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo_bonus.h>
 
-static void	add_pid(t_philo_info *info_ptr, int	pid_to_add);
+static void	add_pid(t_philo_info *info_ptr, int pid_to_add);
 static int	fork_create(t_philo_info *info_ptr, int philo_id);
 
 int	early_destroy(t_philo_info *info_ptr, int return_value)
@@ -86,7 +86,7 @@ static int	fork_create(t_philo_info *info_ptr, int philo_id)
 	return (value);
 }
 
-static void	add_pid(t_philo_info *info_ptr, int	pid_to_add)
+static void	add_pid(t_philo_info *info_ptr, int pid_to_add)
 {
 	int	index;
 
