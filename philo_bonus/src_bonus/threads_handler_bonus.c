@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:52 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/21 11:06:10 by coder            ###   ########.fr       */
+/*   Updated: 2023/07/21 06:39:48 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,7 @@ int	early_destroy(t_philo_info *info_ptr, int return_value)
 	return (return_value);
 }
 
-int	child_destroy(t_philo_info *info_ptr, int return_value)
-{
-	(void)info_ptr;
-	sem_unlink("/print_sem");
-	sem_unlink("/simulation_sem");
-	sem_unlink("/forks_sem");
-	exit (return_value);
-}
-
-int	launch_threads(t_philo_info *info_ptr)
+int	launch_forks(t_philo_info *info_ptr)
 {
 	int			index;
 
@@ -56,7 +47,7 @@ int	launch_threads(t_philo_info *info_ptr)
 	return (0);
 }
 
-int	join_threads(t_philo_info *info_ptr)
+int	join_forks(t_philo_info *info_ptr)
 {
 	int	index;
 	int	exit_code;
