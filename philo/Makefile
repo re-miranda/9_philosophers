@@ -31,27 +31,5 @@ fclean:	clean
 
 re:	fclean	all
 
-val: all
-	-valgrind -s --log-fd=9 --tool=helgrind 9>memcheck.log ./philo 5 -2147483649 200 
-	-valgrind -s --log-fd=9 --tool=helgrind 9>>memcheck.log ./philo 5 2147483647 20o 200 2
-	-valgrind -s --log-fd=9 --tool=helgrind 9>>memcheck.log ./philo 5 2147483648 200 200 2
-	-valgrind -s --log-fd=9 --tool=helgrind 9>>memcheck.log ./philo 5 -2147483649 200 200 2
-	-valgrind -s --log-fd=9 --tool=helgrind 9>>memcheck.log ./philo 5 -2147483648 200 200 2
-	valgrind -s --log-fd=9 --tool=helgrind 9>>memcheck.log ./philo 5 2147483647 200 200 2
-	valgrind -s --log-fd=9 --tool=helgrind 9>>memcheck.log ./philo 5 800 200 200 2
-	valgrind -s --log-fd=9 --tool=helgrind 9>>memcheck.log ./philo 4 410 200 200 180
-	valgrind -s --log-fd=9 --tool=helgrind 9>>memcheck.log ./philo 4 130 60 60 180
-
-leak: all
-	-valgrind -s --log-fd=9 --leak-check=full --show-leak-kinds=all 9>memcheck.log ./philo 5 -2147483649 200 
-	-valgrind -s --log-fd=9 --leak-check=full --show-leak-kinds=all 9>>memcheck.log ./philo 5 2147483647 20o 200 2
-	-valgrind -s --log-fd=9 --leak-check=full --show-leak-kinds=all 9>>memcheck.log ./philo 5 2147483648 200 200 2
-	-valgrind -s --log-fd=9 --leak-check=full --show-leak-kinds=all 9>>memcheck.log ./philo 5 -2147483649 200 200 2
-	-valgrind -s --log-fd=9 --leak-check=full --show-leak-kinds=all 9>>memcheck.log ./philo 5 -2147483648 200 200 2
-	valgrind -s --log-fd=9 --leak-check=full --show-leak-kinds=all 9>>memcheck.log ./philo 5 2147483647 200 200 2
-	valgrind -s --log-fd=9 --leak-check=full --show-leak-kinds=all 9>>memcheck.log ./philo 5 800 200 200 2
-	valgrind -s --log-fd=9 --leak-check=full --show-leak-kinds=all 9>>memcheck.log ./philo 4 410 200 200 180
-	valgrind -s --log-fd=9 --leak-check=full --show-leak-kinds=all 9>>memcheck.log ./philo 4 130 60 60 180
-
-.PHONY:	all clean fclean re val
+.PHONY:	all clean fclean re
 
