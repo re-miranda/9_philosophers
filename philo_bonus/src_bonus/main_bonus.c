@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:52 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/19 23:11:39 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/20 23:39:31 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ int	main(int argc, char *argv[])
 		return (early_destroy(info_ptr, -1));
 	if (launch_threads(info_ptr))
 		return (early_destroy(info_ptr, -1));
-	supervise_philosophers(info_ptr);
-	if (join_threads(*info_ptr))
+	if (join_threads(info_ptr))
 		return (early_destroy(info_ptr, -1));
 	early_destroy(info_ptr, 0);
 	return (0);
