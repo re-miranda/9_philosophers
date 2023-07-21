@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:05:52 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/07/21 06:39:48 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:35:26 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
 {
 	t_philo_info	*info_ptr;
 
-	info_ptr = calloc(sizeof(t_philo_info), 1);
+	info_ptr = ft_calloc(sizeof(t_philo_info), 1);
 	if (!info_ptr)
 		return (-1);
 	if (parse_input(argc, argv, info_ptr))
